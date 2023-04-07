@@ -3,7 +3,7 @@ import { Donut } from '../../models/donut.model';
 
 @Component({
   selector: 'app-donut-card',
-  templateUrl: './donut-card.compon ent.html',
+  templateUrl: './donut-card.component.html',
   styleUrls: ['./donut-card.component.css']
 })
 export class DonutCardComponent implements OnInit {

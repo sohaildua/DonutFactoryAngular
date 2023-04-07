@@ -1,3 +1,9 @@
-<div *ngFor="let donut of donuts;">
-    <app-donut-card [donut]="donut"></app-donut-card>
-</div>
+<ng-container *ngIf="donuts.length; then cards ;else nothing"></ng-container>
+<ng-template #cards>
+  <app-donut-card *ngFor="let donut of donuts;" [donut]="donut"></app-donut-card>
+</ng-template>
+
+<ng-template #nothing>
+  <p>No donuts Available</p>
+</ng-template>
+

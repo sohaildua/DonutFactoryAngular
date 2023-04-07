@@ -4,9 +4,9 @@ import { Donut } from '../../models/donut.model';
 @Component({
   selector: 'app-donut-list',
   templateUrl: 'donut-list.component.html',
+  styleUrls: ['donut-list.component.css']
 })
 export class DonutListComponent implements OnInit {
-  donut!: Donut;
   donuts!: Donut[];
 
   constructor() {}
@@ -36,6 +36,5 @@ export class DonutListComponent implements OnInit {
       },
     ];
 
-    this.donut = this.donuts[0];
   }
 }
