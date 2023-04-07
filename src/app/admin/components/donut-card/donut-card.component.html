@@ -1,14 +1,21 @@
 <div class="donut-card">
-    <img
-      src="/assets/img/{{ donut.icon }}.svg"
-      [alt]="donut.name"
-      class="donut-card-icon">
+  <img
+    src="/assets/img/{{ donut.icon }}.svg"
+    [alt]="donut.name"
+    class="donut-card-icon">
 </div>
 <div>
   <p class="donut-card-name">
     {{ donut.name }}
+    <ng-container [ngSwitch]="donut.promo">
+      <span class="donut-card-label">
+        <ng-template [ngSwitchCase]="'new'" style="color:red;">NEW</ng-template>
+        <ng-template [ngSwitchCase]="'limited'">LIMITED</ng-template>
+        <ng-template ngSwitchDefault>LETS GOO</ng-template>
+      </span>
+    </ng-container>
   </p>
   <p class="donut-card-price">
-    {{ donut.price }}
+    {{ donut.price / 100 | currency:'EUR':true}}
   </p>
 </div>
