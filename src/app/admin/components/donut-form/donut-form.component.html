@@ -1,22 +1,8 @@
-<form class="donut-form" #form="ngForm" (ngSubmit)="handleSubmit(form)">
+<form class="donut-form" #form="ngForm">
 
   <label>
     <span>Name</span>
-    <input type="text" name="name" placeholder="Donut's name" class="input" required minlength="5" ngModel #name="ngModel">
-    <ng-container *ngIf="name.invalid && name.touched">
-
-      <div class="donut-form-error" *ngIf="name.errors?.minlength">
-        Minimum length of name is 5!
-      </div>
-
-      <div class="donut-form-error" *ngIf="name.errors?.required">
-          Name is required!
-      </div>
-
-      <div>
-
-      </div>
-    </ng-container>
+    <input type="text" name="name" placeholder="Donut's name" class="input" required ngModel>
   </label>
 
   <label>
