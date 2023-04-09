@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-donut-form',
   templateUrl: './donut-form.component.html',
   styleUrls: ['./donut-form.component.less']
 })
-export class DonutFormComponent implements OnInit {
+export class DonutFormComponent {
 
   public icons: string[] = [
     'caramel-swirl',
@@ -20,7 +21,8 @@ export class DonutFormComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit(): void {
+  public handleSubmit(form: NgForm): void {
+    console.log(form.value);
   }
 
 }
