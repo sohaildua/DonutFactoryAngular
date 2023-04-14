@@ -1,4 +1,4 @@
-<ng-container *ngIf="donuts.length; then cards ;else nothing"></ng-container>
+<ng-container *ngIf="donuts; then cards ;else nothing"></ng-container>
 <ng-template #cards>
   <app-donut-card *ngFor="let donut of donuts;" [donut]="donut"></app-donut-card>
 </ng-template>
