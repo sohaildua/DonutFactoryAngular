@@ -1,60 +1,102 @@
-<form class="donut-form" #form="ngForm" (ngSubmit)="handleSubmit(form)">
-
+<form class="donut-form"  #form="ngForm" *ngIf="donut else loading">
   <label>
     <span>Name</span>
-    <input type="text" name="name" placeholder="Donut's name" class="input" required minlength="5" ngModel #name="ngModel">
+    <input
+      type="text"
+      name="name"
+      class="input"
+      required
+      minlength="5"
+      [ngModel]="donut.name"
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      #name="ngModel"
+    />
     <ng-container *ngIf="name.invalid && name.touched">
-
       <div class="donut-form-error" *ngIf="name.errors?.minlength">
-        Minimum length of name is 5!
+        Minimum length of a name is 5!
       </div>
-
       <div class="donut-form-error" *ngIf="name.errors?.required">
-          Name is required!
-      </div>
-
-      <div>
-
+        Name is required.
       </div>
     </ng-container>
   </label>
-
   <label>
     <span>Icon</span>
-    <select name="icon" class="input input--select" ngModel>
-      <option *ngFor="let icon of icons" [ngValue]="icon">{{icon}}</option>
+    <select
+      name="icon"
+      class="input input--select"
+      required
+      [ngModel]="donut.icon"
+      #icon="ngModel"
+    >
+      <option *ngFor="let icon of icons" [ngValue]="icon">
+        {{ icon }}
+      </option>
     </select>
+    <ng-container *ngIf="icon.invalid && icon.touched">
+      <div class="donut-form-error" *ngIf="icon.errors?.required">
+        Icon is required.
+      </div>
+    </ng-container>
   </label>
-
   <label>
     <span>Price</span>
-    <input type="number" name="price" placeholder="Donut's price" class="input" required ngModel>
+    <input
+      type="number"
+      name="price"
+      class="input"
+      required
+      [ngModel]="donut.price"
+      #price="ngModel"
+    />
+    <ng-container *ngIf="price.invalid && price.touched">
+      <div class="donut-form-error" *ngIf="price.errors?.required">
+        Price is required.
+      </div>
+    </ng-container>
   </label>
-
   <div class="donut-form-radios">
     <p class="donut-form-radios-label">Promo:</p>
-
     <label>
-      <input type="radio" name="promo" required [value]="undefined" ngModel>
+      <input type="radio" name="promo" [value]="undefined"   [ngModel]="donut.promo" />
       <span>None</span>
     </label>
-
     <label>
-      <input type="radio" name="promo" value="new" required ngModel>
+      <input type="radio" name="promo" value="new" ngModel />
       <span>New</span>
     </label>
-
     <label>
-      <input type="radio" name="promo" value="limited" required ngModel>
+      <input type="radio" name="promo" value="limited" ngModel />
       <span>Limited</span>
     </label>
   </div>
-
   <label>
     <span>Description</span>
-    <textarea name="description" class="input input--textarea" placeholder="Enter donut description in one line"
-              required ngModel></textarea>
+    <textarea
+      name="description"
+      class="input input--textarea"
+      required
+      [ngModel]="donut.description"
+      #description="ngModel"
+    ></textarea>
+    <ng-container *ngIf="description.invalid && description.touched">
+      <div class="donut-form-error" *ngIf="description.errors?.required">
+        Description is required.
+      </div>
+    </ng-container>
   </label>
-  <pre>{{form.value | json}}</pre>
+  <button type="submit" class="btn btn--green" (click)="handleCreate(form)" *ngIf="!isEdit">Create</button>
+  <button type="submit" class="btn btn--green" (click)="handleUpdate(form)" *ngIf="isEdit">Update</button>
+  <button type="submit" class="btn btn--green" (click)="handleDelete()" *ngIf="isEdit">Delete</button>
+  <button type="button" class="btn btn--grey" (click)="form.resetForm()" *ngIf="form.touched || isEdit">
+    Reset Form
+  </button>
 
+  <div class="donut-form-working" *ngIf="form.valid && form.submitted">
+        Working.....
+  </div>
+{{isEdit}}
 </form>
+<ng-template #loading>
+  Loading...
+</ng-template>
