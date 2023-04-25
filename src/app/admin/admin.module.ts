@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {RouterModule, Routes} from "@angular/router";
 
 //containers
-import { DonutListComponent } from './containers/donut-list/donut-list.component';
-import { DonutSingleComponent } from './containers/donut-single/donut-single.component';
+import {DonutListComponent} from './containers/donut-list/donut-list.component';
+import {DonutSingleComponent} from './containers/donut-single/donut-single.component';
 
 //components
-import { DonutCardComponent } from './components/donut-card/donut-card.component';
-import { DonutFormComponent } from './components/donut-form/donut-form.component';
+import {DonutCardComponent} from './components/donut-card/donut-card.component';
+import {DonutFormComponent} from './components/donut-form/donut-form.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 //services
@@ -17,6 +18,14 @@ import { DonutFormComponent } from './components/donut-form/donut-form.component
 //gaurds
 
 //directives
+
+export const routes: Routes = [
+  {path: 'donuts', component: DonutListComponent},
+  {path: 'donuts/new', component: DonutSingleComponent, data: {isEdit: false}},
+  {path: 'donuts/:id', component: DonutSingleComponent, data: {isEdit: true}},
+  {path: '', pathMatch: "full", redirectTo: 'donuts'},
+]
+
 @NgModule({
   declarations: [
     DonutListComponent,
@@ -27,8 +36,10 @@ import { DonutFormComponent } from './components/donut-form/donut-form.component
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule.forChild(routes),
     HttpClientModule
   ],
   exports: [DonutListComponent, DonutSingleComponent]
 })
-export class AdminModule { }
+export class AdminModule {
+}

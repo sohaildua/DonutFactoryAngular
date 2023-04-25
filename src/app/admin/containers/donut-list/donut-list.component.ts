@@ -5,18 +5,13 @@ import {DonutService} from "../../service/donut.service";
 @Component({
   selector: 'app-donut-list',
   templateUrl: 'donut-list.component.html',
-  styleUrls: ['donut-list.component.css']
 })
 export class DonutListComponent implements OnInit {
   donuts!: Donut[];
 
-  constructor(private donutService : DonutService) {
-
-  }
+  constructor(private donutService : DonutService) {}
 
   ngOnInit(): void {
-    this.donutService.read().
-    subscribe((donuts:Donut[])=>{this.donuts=donuts})
-
+    this.donutService.read().subscribe((donuts:Donut[])=> this.donuts = donuts);
   }
 }

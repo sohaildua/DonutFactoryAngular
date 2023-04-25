@@ -1,4 +1,4 @@
-<form class="donut-form"  #form="ngForm">
+<form class="donut-form"  #form="ngForm" *ngIf="donut else loading">
   <label>
     <span>Name</span>
     <input
@@ -85,15 +85,18 @@
       </div>
     </ng-container>
   </label>
-  <button type="submit" class="btn btn--green" (click)="handleCreate(form)">Create</button>
-  <button type="submit" class="btn btn--green" (click)="handleUpdate(form)">Update</button>
-  <button type="submit" class="btn btn--green" (click)="handleDelete()">Delete</button>
-  <button type="button" class="btn btn--grey" (click)="form.resetForm()">
+  <button type="submit" class="btn btn--green" (click)="handleCreate(form)" *ngIf="!isEdit">Create</button>
+  <button type="submit" class="btn btn--green" (click)="handleUpdate(form)" *ngIf="isEdit">Update</button>
+  <button type="submit" class="btn btn--green" (click)="handleDelete()" *ngIf="isEdit">Delete</button>
+  <button type="button" class="btn btn--grey" (click)="form.resetForm()" *ngIf="form.touched || isEdit">
     Reset Form
   </button>
 
   <div class="donut-form-working" *ngIf="form.valid && form.submitted">
         Working.....
   </div>
-
+{{isEdit}}
 </form>
+<ng-template #loading>
+  Loading...
+</ng-template>

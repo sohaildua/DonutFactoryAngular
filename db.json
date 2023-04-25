@@ -4,8 +4,8 @@
       "id": "y8z123",
       "name": "just-chocolate",
       "icon": "just-chocolate",
-      "price": 120,
-      "promo": "new",
+      "price": 1201,
+      "promo": "",
       "description": "just-chocolate"
     },
     {
@@ -28,6 +28,7 @@
       "name": "Sour Supreme",
       "icon": "sour-supreme",
       "price": 121,
+      "promo": "",
       "description": "For the sour advocate"
     },
     {
@@ -35,7 +36,31 @@
       "name": "Zesty Lemon",
       "icon": "zesty-lemon",
       "price": 121,
+      "promo": "",
       "description": "Delicious lucious Lemon"
+    },
+    {
+      "name": "Zesty Lemon",
+      "icon": "zesty-lemon",
+      "price": 121,
+      "promo": "",
+      "description": "Delicious lucious Lemon",
+      "id": "NMFL-Se"
+    },
+    {
+      "id": "SEEdGQI",
+      "name": "kasjaksjak",
+      "icon": "vanilla-sundae",
+      "price": 123,
+      "promo": "",
+      "description": "hhdkjsjdhsjkdhskjdhskjdhskjdhskjdhkjsdhjshdkjshdkjshdkjsahdkjas"
+    },
+    {
+      "name": "New donut",
+      "icon": "strawberry-glaze",
+      "price": 123,
+      "description": "qq",
+      "id": "tRVJQ_M"
     }
   ]
 }

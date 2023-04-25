@@ -12,6 +12,9 @@ export class DonutFormComponent implements OnInit {
   @Input()
   public donut!:Donut;
 
+  @Input()
+  public isEdit!:boolean;
+
   @Output()
   public create =new EventEmitter<Donut>();
 
